@@ -6,12 +6,13 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install --production
 
-# 复制 backend 代码
-COPY backend/ .
+# 复制 backend 代码（保留目录结构）
+COPY backend/ ./backend/
 
 # 创建数据目录
-RUN mkdir -p /app/data /app/uploads
+RUN mkdir -p /app/backend/data /app/backend/uploads
 
 EXPOSE 3002
 
+WORKDIR /app/backend
 CMD ["node", "server.js"]
