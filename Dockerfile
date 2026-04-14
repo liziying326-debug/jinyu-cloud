@@ -2,8 +2,8 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# 从 backend 目录安装依赖
-COPY backend/package*.json ./
+# 从根目录安装依赖
+COPY package*.json ./
 RUN npm install --production
 
 # 复制 backend 代码
